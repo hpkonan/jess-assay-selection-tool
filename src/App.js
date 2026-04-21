@@ -10,6 +10,7 @@ type Result = {
 };
 
 export default function App() {
+  const [copied, setCopied] = useState(false);
   const yesNoOptions = [
     { value: "yes", label: "Yes" },
     { value: "no", label: "No" },
@@ -222,7 +223,26 @@ export default function App() {
 
     return null;
   }, [answers]);
+const fullRecommendation = result
+  ? `Recommendation:
+${result.title}
 
+${result.recommendation}
+
+Why this path?
+${result.rationale}
+
+${
+  result.practicalTips && result.practicalTips.length > 0
+    ? `Practical tips:
+${result.practicalTips.join("\n")}
+
+`
+    : ""
+}${
+  result.reagentNotes && result.reagentNotes.length > 0
+    ? `Reagent notes:
+${result.reagentNotes.join("\n")}
   const showMW = answers.testedIndividually === "yes";
   const showBothInChemi = showMW && answers.mwRelation !== "";
   const showSameSpeciesForDifferentMW =
@@ -585,6 +605,26 @@ export default function App() {
                       </ul>
                     </div>
                   )}
+                <button
+                  onClick={() => {
+                    navigator.clipboard.writeText(fullRecommendation);
+                    setCopied(true);
+                    setTimeout(() => setCopied(false), 2000);
+  }}
+                  style={{
+                    marginTop: "14px",
+                    padding: "10px 14px",
+                    borderRadius: "10px",
+                    border: "none",
+                    backgroundColor: "#2563eb",
+                    color: "white",
+                    cursor: "pointer",
+                    fontSize: "14px",
+                    fontWeight: 600,
+  }}
+>
+                  {copied ? "Copied!" : "Copy recommendation"}
+                </button>
                 </>
               )}
             </div>
