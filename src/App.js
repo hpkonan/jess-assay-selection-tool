@@ -229,20 +229,18 @@ const fullRecommendation = result
     "\n\n" +
     result.recommendation +
     "\n\nWhy this path?\n" +
-    result.rationale
+    result.rationale +
+    (
+      result.practicalTips && result.practicalTips.length > 0
+        ? "\n\nPractical tips:\n" + result.practicalTips.join("\n")
+        : ""
+    ) +
+    (
+      result.reagentNotes && result.reagentNotes.length > 0
+        ? "\n\nReagent notes:\n" + result.reagentNotes.join("\n")
+        : ""
+    )
   : "";
-
-${
-  result.practicalTips && result.practicalTips.length > 0
-    ? `Practical tips:
-${result.practicalTips.join("\n")}
-
-`
-    : ""
-}${
-  result.reagentNotes && result.reagentNotes.length > 0
-    ? `Reagent notes:
-${result.reagentNotes.join("\n")}
   const showMW = answers.testedIndividually === "yes";
   const showBothInChemi = showMW && answers.mwRelation !== "";
   const showSameSpeciesForDifferentMW =
