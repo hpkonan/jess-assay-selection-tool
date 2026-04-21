@@ -224,13 +224,13 @@ export default function App() {
     return null;
   }, [answers]);
 const fullRecommendation = result
-  ? `Recommendation:
-${result.title}
-
-${result.recommendation}
-
-Why this path?
-${result.rationale}
+  ? "Recommendation:\n" +
+    result.title +
+    "\n\n" +
+    result.recommendation +
+    "\n\nWhy this path?\n" +
+    result.rationale
+  : "";
 
 ${
   result.practicalTips && result.practicalTips.length > 0
