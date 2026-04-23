@@ -732,7 +732,14 @@ const resultAccent =
           color: "#334155",
           lineHeight: 1.5,
         }}
-      
+      >
+    {result.practicalTips.map((tip, idx) => (
+      <li key={idx}>{tip}</li>
+    ))}
+  </ul>
+)}
+</div>
+)}
 
                   {result.reagentNotes && result.reagentNotes.length > 0 && (
   <div style={{ marginTop: "14px" }}>
