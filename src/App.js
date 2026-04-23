@@ -616,7 +616,7 @@ const resultAccent =
       Reset answers
     </button>
   </div>
-              <h2 style={{ marginTop: 0 }}>Recommendation</h2>
+              
               {!result ? (
                 <p style={{ color: "#64748b" }}>
                   Complete the questions on the left to see the suggested
