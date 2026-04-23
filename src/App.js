@@ -11,6 +11,27 @@ type Result = {
 
 export default function App() {
   const [copied, setCopied] = useState(false);
+
+  const [showWhy, setShowWhy] = useState(true);
+  const [showTips, setShowTips] = useState(true);
+  const [showReagents, setShowReagents] = useState(true);
+
+  const resetAnswers = () => {
+    setAnswers({
+      testedIndividually: "",
+      mwRelation: "",
+      bothInChemi: "",
+      twoDistinctSpecies: "",
+      sameSpeciesForBothTargets: "",
+      speciesPair: "",
+    });
+
+    setCopied(false);
+    setShowWhy(true);
+    setShowTips(true);
+    setShowReagents(true);
+  };
+
   const yesNoOptions = [
     { value: "yes", label: "Yes" },
     { value: "no", label: "No" },
@@ -336,7 +357,27 @@ const progressPercent = (currentStep / totalSteps) * 100;
         {opt.label}
       </option>
     ));
-
+const resultAccent =
+  result?.status === "warning"
+    ? {
+        badgeBg: "#fef3c7",
+        badgeColor: "#92400e",
+        cardBorder: "1px solid #f59e0b",
+        cardShadow: "0 6px 18px rgba(245, 158, 11, 0.18)",
+      }
+    : result?.status === "info"
+    ? {
+        badgeBg: "#dbeafe",
+        badgeColor: "#1d4ed8",
+        cardBorder: "1px solid #60a5fa",
+        cardShadow: "0 6px 18px rgba(37, 99, 235, 0.14)",
+      }
+    : {
+        badgeBg: "#dcfce7",
+        badgeColor: "#166534",
+        cardBorder: "1px solid #86efac",
+        cardShadow: "0 6px 18px rgba(34, 197, 94, 0.14)",
+      };
   return (
     <div style={pageStyle}>
       <div
@@ -541,7 +582,40 @@ const progressPercent = (currentStep / totalSteps) * 100;
           </div>
 
           <div>
-            <div style={cardStyle}>
+            <div
+  style={{
+    ...cardStyle,
+    border: result ? resultAccent.cardBorder : cardStyle.border,
+    boxShadow: result ? resultAccent.cardShadow : cardStyle.boxShadow,
+  }}
+>
+  <div
+    style={{
+      display: "flex",
+      justifyContent: "space-between",
+      alignItems: "center",
+      gap: "12px",
+      marginBottom: "10px",
+    }}
+  >
+    <h2 style={{ marginTop: 0, marginBottom: 0 }}>Recommendation</h2>
+
+    <button
+      onClick={resetAnswers}
+      style={{
+        padding: "8px 12px",
+        borderRadius: "10px",
+        border: "1px solid #cbd5e1",
+        background: "white",
+        color: "#334155",
+        cursor: "pointer",
+        fontSize: "13px",
+        fontWeight: 600,
+      }}
+    >
+      Reset answers
+    </button>
+  </div>
               <h2 style={{ marginTop: 0 }}>Recommendation</h2>
               {!result ? (
                 <p style={{ color: "#64748b" }}>
@@ -582,48 +656,90 @@ const progressPercent = (currentStep / totalSteps) * 100;
                   <p>{result.recommendation}</p>
 
                   <div
-                    style={{
-                      background: "#f8fafc",
-                      border: "1px solid #e2e8f0",
-                      borderRadius: "12px",
-                      padding: "12px",
-                      marginTop: "12px",
-                    }}
-                  >
-                    <div
-                      style={{
-                        fontSize: "12px",
-                        fontWeight: 700,
-                        textTransform: "uppercase",
-                        color: "#64748b",
-                        marginBottom: "6px",
-                      }}
-                    >
-                      Why this path?
-                    </div>
-                    <div>{result.rationale}</div>
-                  </div>
+  style={{
+    background: "#f8fafc",
+    border: "1px solid #e2e8f0",
+    borderRadius: "12px",
+    padding: "12px",
+    marginTop: "12px",
+  }}
+>
+  <button
+    onClick={() => setShowWhy(!showWhy)}
+    style={{
+      width: "100%",
+      background: "transparent",
+      border: "none",
+      padding: 0,
+      cursor: "pointer",
+      textAlign: "left",
+    }}
+  >
+    <div
+      style={{
+        fontSize: "12px",
+        fontWeight: 700,
+        textTransform: "uppercase",
+        color: "#64748b",
+        display: "flex",
+        justifyContent: "space-between",
+        alignItems: "center",
+      }}
+    >
+      <span>Why this path?</span>
+      <span>{showWhy ? "−" : "+"}</span>
+    </div>
+  </button>
+
+  {showWhy && <div style={{ marginTop: "8px" }}>{result.rationale}</div>}
+</div>
 
                   {result.practicalTips && result.practicalTips.length > 0 && (
-                    <div style={{ marginTop: "14px" }}>
-                      <div
-                        style={{
-                          fontSize: "12px",
-                          fontWeight: 700,
-                          textTransform: "uppercase",
-                          color: "#64748b",
-                          marginBottom: "6px",
-                        }}
-                      >
-                        Practical tips
-                      </div>
-                      <ul
-                        style={{
-                          margin: 0,
-                          paddingLeft: "18px",
-                          color: "#334155",
-                          lineHeight: 1.5,
-                        }}
+  <div style={{ marginTop: "14px" }}>
+    <button
+      onClick={() => setShowTips(!showTips)}
+      style={{
+        width: "100%",
+        background: "transparent",
+        border: "none",
+        padding: 0,
+        cursor: "pointer",
+        textAlign: "left",
+      }}
+    >
+      <div
+        style={{
+          fontSize: "12px",
+          fontWeight: 700,
+          textTransform: "uppercase",
+          color: "#64748b",
+          marginBottom: "6px",
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+        }}
+      >
+        <span>Practical tips</span>
+        <span>{showTips ? "−" : "+"}</span>
+      </div>
+    </button>
+
+    {showTips && (
+      <ul
+        style={{
+          margin: 0,
+          paddingLeft: "18px",
+          color: "#334155",
+          lineHeight: 1.5,
+        }}
+      >
+        {result.practicalTips.map((tip, idx) => (
+          <li key={idx}>{tip}</li>
+        ))}
+      </ul>
+    )}
+  </div>
+)}
                       >
                         {result.practicalTips.map((tip, idx) => (
                           <li key={idx}>{tip}</li>
@@ -633,25 +749,44 @@ const progressPercent = (currentStep / totalSteps) * 100;
                   )}
 
                   {result.reagentNotes && result.reagentNotes.length > 0 && (
-                    <div style={{ marginTop: "14px" }}>
-                      <div
-                        style={{
-                          fontSize: "12px",
-                          fontWeight: 700,
-                          textTransform: "uppercase",
-                          color: "#64748b",
-                          marginBottom: "6px",
-                        }}
-                      >
-                        Reagent notes
-                      </div>
-                      <ul
-                        style={{
-                          margin: 0,
-                          paddingLeft: "18px",
-                          color: "#334155",
-                          lineHeight: 1.5,
-                        }}
+  <div style={{ marginTop: "14px" }}>
+    <button
+      onClick={() => setShowReagents(!showReagents)}
+      style={{
+        width: "100%",
+        background: "transparent",
+        border: "none",
+        padding: 0,
+        cursor: "pointer",
+        textAlign: "left",
+      }}
+    >
+      <div
+        style={{
+          fontSize: "12px",
+          fontWeight: 700,
+          textTransform: "uppercase",
+          color: "#64748b",
+          marginBottom: "6px",
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+        }}
+      >
+        <span>Reagent notes</span>
+        <span>{showReagents ? "−" : "+"}</span>
+      </div>
+    </button>
+
+    {showReagents && (
+      <ul style={{ margin: 0, paddingLeft: "18px", color: "#334155", lineHeight: 1.5 }}>
+        {result.reagentNotes.map((note, idx) => (
+          <li key={idx}>{note}</li>
+        ))}
+      </ul>
+    )}
+  </div>
+)}
                       >
                         {result.reagentNotes.map((note, idx) => (
                           <li key={idx}>{note}</li>
