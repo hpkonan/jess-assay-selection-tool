@@ -732,19 +732,13 @@ const resultAccent =
           color: "#334155",
           lineHeight: 1.5,
         }}
-      >
-        {result.practicalTips.map((tip, idx) => (
-          <li key={idx}>{tip}</li>
-        ))}
-      </ul>
-    )}
-  </div>
-)}
+      
                       >
                         {result.practicalTips.map((tip, idx) => (
                           <li key={idx}>{tip}</li>
                         ))}
                       </ul>
+                  )}
                     </div>
                   )}
 
