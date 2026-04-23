@@ -773,13 +773,7 @@ const resultAccent =
     )}
   </div>
 )}
-                      >
-                        {result.reagentNotes.map((note, idx) => (
-                          <li key={idx}>{note}</li>
-                        ))}
-                      </ul>
-                    </div>
-                  )}
+                      
                 <button
                   onClick={() => {
                     navigator.clipboard.writeText(fullRecommendation);
