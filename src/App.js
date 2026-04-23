@@ -249,6 +249,23 @@ const fullRecommendation = result
     answers.mwRelation === "same_close" && answers.bothInChemi === "no";
   const showSpeciesPairForDifferentMW =
     answers.mwRelation === "different" && answers.bothInChemi === "no";
+  const totalSteps = 4;
+
+let currentStep = 1;
+
+if (answers.testedIndividually === "yes") {
+  currentStep = 2;
+}
+
+if (answers.mwRelation !== "") {
+  currentStep = 3;
+}
+
+if (answers.bothInChemi !== "") {
+  currentStep = 4;
+}
+
+const progressPercent = (currentStep / totalSteps) * 100;
 
   const pageStyle: React.CSSProperties = {
     minHeight: "100vh",
@@ -360,6 +377,42 @@ const fullRecommendation = result
         <h1 style={{ fontSize: "36px", margin: "0 0 10px 0" }}>
           Multi-target assay selection tool
         </h1>
+            <div style={{ marginBottom: "18px" }}>
+  <div
+    style={{
+      display: "flex",
+      justifyContent: "space-between",
+      alignItems: "center",
+      marginBottom: "6px",
+      fontSize: "13px",
+      color: "#475569",
+      fontWeight: 600,
+    }}
+  >
+    <span>Progress</span>
+    <span>Step {currentStep} / {totalSteps}</span>
+  </div>
+
+  <div
+    style={{
+      width: "100%",
+      height: "10px",
+      background: "#e2e8f0",
+      borderRadius: "999px",
+      overflow: "hidden",
+    }}
+  >
+    <div
+      style={{
+        width: `${progressPercent}%`,
+        height: "100%",
+        background: "#2563eb",
+        borderRadius: "999px",
+        transition: "width 0.3s ease",
+      }}
+    />
+  </div>
+</div>
         <p
           style={{ color: "#475569", maxWidth: "920px", marginBottom: "24px" }}
         >
@@ -371,6 +424,9 @@ const fullRecommendation = result
 
         <div style={gridStyle}>
           <div>
+            <div style={{ marginBottom: "12px", color: "#475569", fontSize: "14px" }}>
+  Follow the guided workflow below. New questions appear based on your previous answers.
+</div>
             <div style={cardStyle}>
               <label style={labelStyle}>
                 1. Have you run each target individually?
