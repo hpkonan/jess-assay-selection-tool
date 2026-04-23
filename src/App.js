@@ -808,10 +808,7 @@ const resultAccent =
             <div style={cardStyle}>
               <h2 style={{ marginTop: 0 }}>Important note</h2>
               <p style={{ color: "#64748b", marginBottom: "12px" }}>
-                As a general recommendation, if multiplexing two targets with
-                significant MW differences, consider running them in RePlex mode
-                (stripping and reprobing) or placing the most abundant target in
-                fluorescence and the less abundant target in chemiluminescence.
+                As a general guideline, when multiplexing two targets with significantly different signal intensities, consider using RePlex mode (stripping and reprobing), or assigning the more abundant target to fluorescence and the less abundant target to chemiluminescence.
               </p>
               <p style={{ color: "#64748b", marginBottom: 0 }}>
                 Final assay selection should also consider target abundance,
