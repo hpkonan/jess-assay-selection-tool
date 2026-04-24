@@ -135,19 +135,30 @@ export default function App() {
 
       if (!answers.twoDistinctSpecies) return null;
 
-      if (answers.twoDistinctSpecies === "yes") {
+      if (answers.twoDistinctSpecies === "yes" &&
+         answers.bothInChemi === "no") {
         return {
           status: "recommended",
           title:
-            "Recommended workflow: Multiplex with distinct antibody species",
+            "Recommended workflow: Mixed detection (HRP + NIR)",
           recommendation:
-            "If multiplexing Rabbit HRP + Mouse HRP, use the 20X anti-rabbit conjugate (#043-426) and the ready-to-use anti-mouse HRP.",
+            "Use a mixed detection strategy combining chemiluminescence (HRP) and fluorescence (NIR) to enable multiplexing when both targets are not in chemiluminescence.",
           rationale:
-            "When both targets are not in chemi and two distinct antibody species are available, multiplexing can be considered with the appropriate conjugates.",
+            "When both targets are not in chemiluminescence, multiplexing can be achieved using orthogonal detection methods such as HRP and NIR.",
           reagentNotes: [
-            "20X anti-rabbit conjugate: #043-426",
-            "Ready-to-use anti-mouse HRP",
-            "If other species are used (for example multiplex goat + mouse), contact your Tech Support Representative.",
+            "Rabbit HRP + Mouse NIR:",
+            "Goat anti-Rabbit HRP (ProteinSimple #042-206)",
+            "Goat anti-Mouse NIR (Novus NBP1-75147C)",
+
+    "",
+
+    "Mouse HRP + Rabbit NIR:",
+    "Goat anti-Mouse HRP (ProteinSimple #042-205)",
+    "Goat anti-Rabbit NIR 650 (Novus NBP1-72732C)",
+
+    "",
+
+    "For other combinations, contact your Tech Support Representative."
           ],
         };
       }
