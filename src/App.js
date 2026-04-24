@@ -592,7 +592,7 @@ const resultAccent =
               </div>
             )}
 
-            {showSpeciesPairForDifferentMW && (
+            {(showSpeciesPairForDifferentMW || showSpeciesPairForSameMW) && (
               <div style={cardStyle}>
                 <label style={labelStyle}>
                   4. Which mixed chemi / fluorescence setup matches your assay?
