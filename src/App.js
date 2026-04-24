@@ -295,14 +295,30 @@ const fullRecommendation = result
     )
   : "";
   const showMW = answers.testedIndividually === "yes";
-  const showBothInChemi = showMW && answers.mwRelation !== "";
-  const showSameSpeciesForDifferentMW =
-    answers.mwRelation === "different" && answers.bothInChemi === "yes";
-  const showDistinctSpeciesForSameMW =
-    answers.mwRelation === "same_close" && answers.bothInChemi === "no";
-  const showSpeciesPairForDifferentMW =
-    answers.mwRelation === "different" && answers.bothInChemi === "no";
-  const totalSteps = 4;
+
+const showBothInChemi = showMW && answers.mwRelation !== "";
+
+const showDistinctSpeciesForSameMW =
+  answers.mwRelation === "same_close" &&
+  answers.bothInChemi === "no";
+
+const showSameSpeciesForDifferentMW =
+  answers.mwRelation === "different" &&
+  answers.bothInChemi === "yes";
+
+const showSpeciesPairForDifferentMW =
+  answers.mwRelation === "different" &&
+  answers.bothInChemi === "no";
+
+const showSpeciesPairForSameMW =
+  answers.mwRelation === "same_close" &&
+  answers.bothInChemi === "no" &&
+  answers.twoDistinctSpecies === "yes";
+
+const showSpeciesPair =
+  showSpeciesPairForDifferentMW || showSpeciesPairForSameMW;
+
+const totalSteps = 5;
 
 let currentStep = 1;
 
@@ -317,6 +333,12 @@ if (answers.mwRelation !== "") {
 if (answers.bothInChemi !== "") {
   currentStep = 4;
 }
+
+if (showSpeciesPair) {
+  currentStep = 5;
+}
+
+const progressPercent = (currentStep / totalSteps) * 100;
 
 const progressPercent = (currentStep / totalSteps) * 100;
 
@@ -592,7 +614,7 @@ const resultAccent =
               </div>
             )}
 
-            {(showSpeciesPairForDifferentMW || showSpeciesPairForSameMW) && (
+            {showSpeciesPair && (
               <div style={cardStyle}>
                 <label style={labelStyle}>
                   4. Which mixed chemi / fluorescence setup matches your assay?
