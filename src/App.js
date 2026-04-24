@@ -135,33 +135,54 @@ export default function App() {
 
       if (!answers.twoDistinctSpecies) return null;
 
-      if (answers.twoDistinctSpecies === "yes" &&
-         answers.bothInChemi === "no") {
-        return {
-          status: "recommended",
-          title:
-            "Recommended workflow: Mixed detection (HRP + NIR)",
-          recommendation:
-            "Use a mixed detection strategy combining chemiluminescence (HRP) and fluorescence (NIR) to enable multiplexing when both targets are not in chemiluminescence.",
-          rationale:
-            "When both targets are not in chemiluminescence, multiplexing can be achieved using orthogonal detection methods such as HRP and NIR.",
-          reagentNotes: [
-            "Rabbit HRP + Mouse NIR:",
-            "Goat anti-Rabbit HRP (ProteinSimple #042-206)",
-            "Goat anti-Mouse NIR (Novus NBP1-75147C)",
+      if (
+  answers.twoDistinctSpecies === "yes" &&
+  answers.bothInChemi === "no"
+) {
+  // On attend que l'utilisateur choisisse la configuration
+  if (!answers.speciesPair) return null;
 
-    "",
+  if (answers.speciesPair === "rabbit_hrp_mouse_nir") {
+    return {
+      status: "recommended",
+      title: "Recommended workflow: Mixed detection (HRP + NIR)",
+      recommendation:
+        "For Rabbit-HRP + Mouse-NIR, use Goat anti-Rabbit HRP (ProteinSimple #042-206) and Goat anti-Mouse NIR (Novus NBP1-75147C).",
+      rationale:
+        "This configuration uses orthogonal detection methods (HRP and NIR) to enable multiplexing when both targets are not in chemiluminescence.",
+      reagentNotes: [
+        "Rabbit HRP + Mouse NIR:",
+        "Goat anti-Rabbit HRP (ProteinSimple #042-206)",
+        "Goat anti-Mouse NIR (Novus NBP1-75147C)",
+      ],
+    };
+  }
 
-    "Mouse HRP + Rabbit NIR:",
-    "Goat anti-Mouse HRP (ProteinSimple #042-205)",
-    "Goat anti-Rabbit NIR 650 (Novus NBP1-72732C)",
+  if (answers.speciesPair === "mouse_hrp_rabbit_nir") {
+    return {
+      status: "recommended",
+      title: "Recommended workflow: Mixed detection (HRP + NIR)",
+      recommendation:
+        "For Mouse-HRP + Rabbit-NIR, use Goat anti-Mouse HRP (ProteinSimple #042-205) and Goat anti-Rabbit NIR 650 (Novus NBP1-72732C).",
+      rationale:
+        "This configuration uses orthogonal detection methods (HRP and NIR) to enable multiplexing when both targets are not in chemiluminescence.",
+      reagentNotes: [
+        "Mouse HRP + Rabbit NIR:",
+        "Goat anti-Mouse HRP (ProteinSimple #042-205)",
+        "Goat anti-Rabbit NIR 650 (Novus NBP1-72732C)",
+      ],
+    };
+  }
 
-    "",
-
-    "For other combinations, contact your Tech Support Representative."
-          ],
-        };
-      }
+  return {
+    status: "warning",
+    title: "Recommended next step: contact Technical Support",
+    recommendation:
+      "For other mixed chemi / fluorescence combinations, contact your Tech Support Representative.",
+    rationale:
+      "This configuration is not covered by the standard validated reagent pairings.",
+  };
+}
 
       return {
         status: "recommended",
