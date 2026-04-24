@@ -340,8 +340,6 @@ if (showSpeciesPair) {
 
 const progressPercent = (currentStep / totalSteps) * 100;
 
-const progressPercent = (currentStep / totalSteps) * 100;
-
   const pageStyle: React.CSSProperties = {
     minHeight: "100vh",
     background: "#f3f6fb",
