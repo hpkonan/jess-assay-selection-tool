@@ -337,7 +337,9 @@ if (answers.bothInChemi !== "") {
 if (showSpeciesPair) {
   currentStep = 5;
 }
-
+if (result) {
+  currentStep = totalSteps;
+}
 const progressPercent = (currentStep / totalSteps) * 100;
 
   const pageStyle: React.CSSProperties = {
