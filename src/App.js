@@ -432,6 +432,35 @@ const resultAccent =
         cardBorder: "1px solid #86efac",
         cardShadow: "0 6px 18px rgba(34, 197, 94, 0.14)",
       };
+const decisionType = result
+  ? result.title.includes("RePlex")
+    ? {
+        label: "RePlex workflow",
+        icon: "🔁",
+        color: "#92400e",
+        bg: "#fef3c7",
+      }
+    : result.title.includes("Mixed")
+    ? {
+        label: "Mixed detection",
+        icon: "🧪",
+        color: "#1d4ed8",
+        bg: "#dbeafe",
+      }
+    : result.title.includes("Multiplex")
+    ? {
+        label: "Multiplex workflow",
+        icon: "✅",
+        color: "#166534",
+        bg: "#dcfce7",
+      }
+    : {
+        label: "Review needed",
+        icon: "⚠️",
+        color: "#92400e",
+        bg: "#fef3c7",
+      }
+  : null;
   return (
     <div style={pageStyle}>
       <div
@@ -706,6 +735,25 @@ const resultAccent =
                       ? "Next step"
                       : "Suggested"}
                   </div>
+                    {decisionType && (
+  <div
+    style={{
+      display: "inline-flex",
+      alignItems: "center",
+      gap: "8px",
+      background: decisionType.bg,
+      color: decisionType.color,
+      borderRadius: "999px",
+      padding: "6px 12px",
+      fontSize: "13px",
+      fontWeight: 700,
+      marginBottom: "12px",
+    }}
+  >
+    <span>{decisionType.icon}</span>
+    <span>{decisionType.label}</span>
+  </div>
+)}
                   <h3>{result.title}</h3>
                   <p>{result.recommendation}</p>
 
