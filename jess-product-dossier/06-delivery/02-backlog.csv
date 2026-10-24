@@ -1,0 +1,42 @@
+ID,Title,Epic,Epic name,Type,Priority (MoSCoW),Story points,Release,Traces to,Status,Labels
+JAST-113,Characterization tests on all 11 decision paths,E5,Quality engineering,Story,Must,3,R1,"ADR-004, R-01..R-11, TS-01..TS-11",To do,R1;E5;story
+JAST-115,Remove obsolete app versions and entry points,E6,Codebase & repository hygiene,Tech task,Must,1,R1,"TD-01, TD-02, RK-04",To do,R1;E6;tech-task
+JAST-112,"Extract questions, rules, outcomes and reagents into versioned data + pure engine",E1,Rule engine & decision integrity,Story,Must,8,R1,"ADR-002, TD-04, NFR-09, PD-08",To do,R1;E1;story
+JAST-101,"Make decision type an explicit outcome property (fix ""Review needed"" on O1)",E1,Rule engine & decision integrity,Bug,Must,2,R1,"LI-01, LI-02, BR-13, PR-06",To do,R1;E1;bug
+JAST-103,Define each outcome once (consistent wording across branches),E1,Rule engine & decision integrity,Story,Must,2,R1,"LI-06, PR-26",To do,R1;E1;story
+JAST-102,Rewrite rationales in end-user language,E7,"Governance, scientific validation & content",Story,Must,2,R1,"LI-03, PR-07, PR-16",To do,R1;E7;story
+JAST-114,"CI quality gates, protected main branch, CODEOWNERS for content",E5,Quality engineering,Tech task,Must,3,R1,"ADR-005, NFR-10, RK-05",To do,R1;E5;tech-task
+JAST-120,SME review session and sign-off of rule set v2.1,E7,"Governance, scientific validation & content",Story,Must,3,R1,"KR1.2, SC-DOC-05",To do,R1;E7;story
+JAST-121,Verify all reagent references with date and reviewer,E7,"Governance, scientific validation & content",Story,Must,2,R1,"KR1.4, RK-02, SC-DOC-03",To do,R1;E7;story
+JAST-108,Confirm O8 configuration and complete anti-mouse HRP reference,E2,Scientific coverage,Spike,Must,1,R1,"SQ-08, RG-04",To do,R1;E2;spike
+JAST-109,Add reagent reference to O7,E2,Scientific coverage,Story,Must,2,R1,"SQ-09, UR-04, PR-08",To do,R1;E2;story
+JAST-123,"Copied text includes answers, rule-set version and date",E3,Recommendation output & sharing,Story,Must,2,R1,"PR-13, BR-15, UR-19",To do,R1;E3;story
+JAST-111,Handle clipboard failure,E3,Recommendation output & sharing,Bug,Must,1,R1,"LI-07, BR-17",To do,R1;E3;bug
+JAST-122,"Agree disclaimer, contact channel and sharing scope with manager",E7,"Governance, scientific validation & content",Task,Must,1,R1,"RK-03, TD-14, PR-14",To do,R1;E7;task
+JAST-117,"Versioning: SemVer, CHANGELOG, rule-set version shown in UI",E6,Codebase & repository hygiene,Story,Should,2,R1,"PR-15, NFR-11, TD-12",To do,R1;E6;story
+JAST-118,Responsive layout with design tokens; disclaimer as mobile footer,E4,"UX, accessibility & responsive",Story,Should,5,R1,"NFR-03, ADR-008, TD-05, TD-07, UR-15",To do,R1;E4;story
+JAST-119,"Accessibility pass (labels, keyboard, ARIA, contrast)",E4,"UX, accessibility & responsive",Story,Should,3,R1,"NFR-04, TD-08, UR-17",To do,R1;E4;story
+JAST-104,Progress indicator based on the current path,E4,"UX, accessibility & responsive",Bug,Should,2,R1,"LI-04, BR-14, PR-12",To do,R1;E4;bug
+JAST-105,Number questions by display order,E4,"UX, accessibility & responsive",Bug,Should,1,R1,"LI-05, BR-16",To do,R1;E4;bug
+JAST-106,Resolve probing-order tip for O3,E2,Scientific coverage,Spike,Should,1,R1,SQ-06,To do,R1;E2;spike
+JAST-107,Ask species question on the different-MW / not-both-chemi branch,E2,Scientific coverage,Story,Should,3,R1,"SQ-07, SC-05",To do,R1;E2;story
+JAST-110,"Validate wording of the abundance ""Important note""",E2,Scientific coverage,Spike,Should,1,R1,"SQ-10, SC-11",To do,R1;E2;spike
+JAST-116,README and package metadata,E6,Codebase & repository hygiene,Tech task,Should,1,R1,TD-10,To do,R1;E6;tech-task
+JAST-124,Migrate to Vite + strict TypeScript; commit lockfile,E6,Codebase & repository hygiene,Tech task,Could,5,R1,"ADR-003, TD-03, TD-09, TD-11, RK-09",To do,R1;E6;tech-task
+JAST-201,Dual fluorescence (NIR + IR) outcome,E2,Scientific coverage,Story,Should,5,R2,"SQ-01, PR-20, UR-08",To do,R2;E2;story
+JAST-202,Optional relative-abundance question,E2,Scientific coverage,Story,Should,5,R2,"SQ-02, PR-21, UR-07",To do,R2;E2;story
+JAST-207,Printable / saveable one-page summary,E3,Recommendation output & sharing,Story,Should,3,R2,PR-19,To do,R2;E3;story
+JAST-208,Reagent catalogue with product links and verification badges,E2,Scientific coverage,Story,Should,3,R2,"SC-DOC-03, RK-02",To do,R2;E2;story
+JAST-203,Optional MW entry with SME-approved classification,E2,Scientific coverage,Story,Could,5,R2,"SQ-03, PR-22",To do,R2;E2;story
+JAST-204,Separation-range warning,E2,Scientific coverage,Story,Could,3,R2,"SQ-04, PR-22",To do,R2;E2;story
+JAST-205,Total protein option in RePlex outcomes,E2,Scientific coverage,Story,Could,3,R2,"SQ-05, PR-23, UR-09",To do,R2;E2;story
+JAST-206,Share configuration via URL,E3,Recommendation output & sharing,Story,Could,3,R2,"PR-18, ADR-007, BR-18",To do,R2;E3;story
+JAST-301,Anonymous analytics adapter (disabled by default),E8,Analytics & feedback,Story,Should,5,R3,"PR-24, ADR-006, NFR-07",To do,R3;E8;story
+JAST-302,"""Was this helpful?"" and ""Report an issue""",E8,Analytics & feedback,Story,Should,3,R3,"PR-17, UR-21",To do,R3;E8;story
+JAST-303,"Pilot onboarding kit (2-min demo, one-pager, feedback form)",E9,Adoption & pilot,Task,Should,3,R3,OKR 3,To do,R3;E9;task
+JAST-305,Field validation on 15–20 anonymized past cases,E7,"Governance, scientific validation & content",Story,Should,5,R3,SC-DOC-05 L4,To do,R3;E7;story
+JAST-304,Pilot review and go/no-go for Stage 2,E9,Adoption & pilot,Task,Should,2,R3,"OKR 3, PS-01 §6",To do,R3;E9;task
+JAST-306,Content ownership and review cadence agreed,E7,"Governance, scientific validation & content",Task,Should,1,R3,"RACI, RK-02",To do,R3;E7;task
+JAST-401,Externalize UI strings for localization,E6,Codebase & repository hygiene,Story,Could,5,R4,PR-25,To do,R4;E6;story
+JAST-402,Package the engine for reuse by other tools,E1,Rule engine & decision integrity,Story,Could,5,R4,Pillar 5,To do,R4;E1;story
+JAST-403,Discovery: more than two targets / other Simple Western instruments,E2,Scientific coverage,Spike,Won't (now),3,R4,Non-goals,To do,R4;E2;spike
